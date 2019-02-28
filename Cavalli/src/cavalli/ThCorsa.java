@@ -118,8 +118,30 @@ public class ThCorsa extends Thread {
 
         } catch (InterruptedException ex) {
             //Logger.getLogger(ThCorsa.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Fine corsa");
+            System.out.println("Fine corsa");            
         }
+        
+        switch (this.nThread) {
+                    case 1:
+                        ptrDati.signalSem1();
+                        break;
+
+                    case 2:
+                        ptrDati.signalSem2();
+                        break;
+
+                    case 3:
+                        ptrDati.signalSem3();
+                        break;
+
+                    case 4:
+                        ptrDati.signalSem4();
+                        break;
+
+                    case 5:
+                        ptrDati.signalSem5();
+                        break;
+                }
 
     }
 

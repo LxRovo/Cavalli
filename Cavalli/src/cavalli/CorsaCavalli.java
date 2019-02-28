@@ -64,20 +64,23 @@ public class CorsaCavalli {
                 }
             }
             if (s.equals("")) {
-                tv.interrupt();
                 Clop1.interrupt();
                 Clop2.interrupt();
                 Clop3.interrupt();
                 Clop4.interrupt();
                 Clop5.interrupt();
-            }
-
+            }            
             //attendi
-            Clop1.join();
-            Clop2.join();
-            Clop3.join();
-            Clop4.join();
-            Clop5.join();
+            dati.waitSem1();
+            dati.waitSem2();
+            dati.waitSem3();
+            dati.waitSem4();
+            dati.waitSem5();
+            
+            if(ThVisualizza.currentThread().isAlive()){
+                sincro1.Signal();
+                tv.interrupt();
+            }
             
             int max = 0;
             int nCavallo = 0;

@@ -5,6 +5,8 @@
  */
 package cavalli;
 
+import java.util.concurrent.Semaphore;
+
 /**
  * @author Galimberti_Francesco
  *
@@ -49,6 +51,11 @@ public class DatiCondivisi {
      */
     private int nClop5;
 
+    private Semaphore sem1;
+    private Semaphore sem2;
+    private Semaphore sem3;
+    private Semaphore sem4;    
+    private Semaphore sem5;
     
     /**
      * @author Galimberti_Francesco
@@ -62,7 +69,54 @@ public class DatiCondivisi {
         this.nClop3 = 0;
         this.nClop4 = 0;
         this.nClop5 = 0;
+        sem1 = new Semaphore(0);
+        sem2 = new Semaphore(0);
+        sem3 = new Semaphore(0);
+        sem4 = new Semaphore(0);
+        sem5 = new Semaphore(0);
     }
+    
+    
+    public synchronized void visualizzaCavalli() {
+            System.out.println("Numero galoppi:");            
+            System.out.println("Clop1 --> " + getnClop1());
+            System.out.println("Clop2 --> " + getnClop2());
+            System.out.println("Clop3 --> " + getnClop3());
+            System.out.println("Clop4 --> " + getnClop4());
+            System.out.println("Clop5 --> " + getnClop5());      
+    }
+    public void waitSem1() throws InterruptedException {
+        sem1.acquire();
+    }
+    public void signalSem1() {
+        sem1.release();
+    }
+    public void waitSem2() throws InterruptedException {
+        sem2.acquire();
+    }
+    public void signalSem2() {
+        sem2.release();
+    }
+    public void waitSem3() throws InterruptedException {
+        sem3.acquire();
+    }
+    public void signalSem3() {
+        sem3.release();
+    }
+    public void waitSem4() throws InterruptedException {
+        sem4.acquire();
+    }
+    public void signalSem4() {
+        sem4.release();
+    }
+    public void waitSem5() throws InterruptedException {
+        sem5.acquire();
+    }
+    public void signalSem5() {
+        sem5.release();
+    }
+    
+
 
     /**
      * @author Galimberti_Francesco
